@@ -22,33 +22,33 @@ struct morecomplex:Decodable{
 }
 class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource,taped {
     func new(index: Int) {
+        typealias thisIsNewString = String
+        var d = [String:Any]()
         print("taped one is \(index)")
     }
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 10
     }
-    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as? TableViewCell
         cell?.delegate = self
         cell?.index = indexPath
-        DispatchQueue.main.async {
-            for i in 0...9{
-                cell?.textLabel?.text = String(i)
-            }
+        for i in 0...9{
+            cell?.textLabel?.text = String(i)
         }
-        
         return cell!
     }
     
+    
     override func viewDidLoad() {
+        singleTon.shared.thisIsCallingMeth()
+        
         var closure:newFile? = newFile()
         closure = nil
         let t = m()
         var dict = Dictionary(grouping: asad().people) { (persons) -> String in
-            print(persons.str)
-            return persons.str
+            print(persons.firstName)
+            return persons.firstName
         }
         t.setValue("this is me", forKey: "l")
         //t.setValue("varunkumar", forKey: "n")
@@ -81,6 +81,7 @@ let people = [
      varunkumar(str: "string3", firstName: "janaki", lastName: "nil"),
      varunkumar(str: "string4", firstName: "raju", lastName: "dad")
     ]
+    
 }
 
 
